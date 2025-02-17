@@ -1,8 +1,6 @@
-// This file contains the JavaScript code that reads the CSV file, processes the product data, and dynamically updates the product catalog displayed on the webpage.
-
 const productCatalog = document.getElementById('product-catalog');
 
-fetch('data/products.csv')
+fetch('docs/data/products.csv')
     .then(response => response.text())
     .then(data => {
         const products = parseCSV(data);
@@ -13,8 +11,8 @@ fetch('data/products.csv')
 function parseCSV(data) {
     const rows = data.split('\n').slice(1); // Skip header row
     return rows.map(row => {
-        const [name, price, description, imageUrl] = row.split(',');
-        return { name, price, description, imageUrl };
+        const [name, price, description] = row.split(',');
+        return { name, price, description };
     });
 }
 
@@ -24,6 +22,10 @@ function checkImageExists(url) {
         .catch(() => false);
 }
 
+function formatProductName(name) {
+    return name.toLowerCase().replace(/ /g, '_');
+}
+
 async function renderProducts(products) {
     productCatalog.innerHTML = ''; // Clear existing content
     for (const product of products) {
@@ -31,8 +33,9 @@ async function renderProducts(products) {
         productElement.classList.add('product');
 
         // Construct the image URL for "1.png" or "1.jpg"
-        const imageUrlPng = `${product.imageUrl}1.png`;
-        const imageUrlJpg = `${product.imageUrl}1.jpg`;
+        const formattedName = formatProductName(product.name);
+        const imageUrlPng = `https://raw.githubusercontent.com/ezequielleonzybert/catalogo/refs/heads/main/docs/images/${formattedName}/1.png`;
+        const imageUrlJpg = `https://raw.githubusercontent.com/ezequielleonzybert/catalogo/refs/heads/main/docs/images/${formattedName}/1.jpg`;
 
         // Determine which image URL to use
         const imageUrl = await checkImageExists(imageUrlPng) ? imageUrlPng : imageUrlJpg;
@@ -41,6 +44,7 @@ async function renderProducts(products) {
         const img = document.createElement('img');
         img.src = imageUrl;
         img.alt = product.name;
+        img.loading = 'lazy'; // Enable lazy loading
 
         // Append the image element to the product element
         productElement.appendChild(img);
