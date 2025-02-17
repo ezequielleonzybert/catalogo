@@ -58,7 +58,7 @@ async function renderProducts(products) {
         const img = document.createElement('img');
         img.src = imageUrl;
         img.alt = product.name;
-        img.loading = 'lazy'; // Enable lazy loading
+        // img.loading = 'lazy'; // Enable lazy loading
 
         // Append the image element to the product element
         productElement.appendChild(img);

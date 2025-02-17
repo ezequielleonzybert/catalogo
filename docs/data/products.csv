@@ -1,11 +1,16 @@
 name,price,description
-Exhibidor Arco 2,7.000,"Description for product 1"
-Exhibidor Arco 3,9.000,"Description for product 2"
-Exhibidor Arco 3 Large,9.500,"Description for product 4"
-Exhibidor de Acrílicos 40,9.000,"Description for product 3"
-Exhibidor Grada 2,59.99,"Description for product 5"
-Exhibidor Grada 3,69.99,"Description for product 6"
-Exhibidor Escalera 4,79.99,"Description for product 7"
-Exhibidor Ventana 3,89.99,"Description for product 8"
-Exhibidor Cupcakes,99.99,"Description for product 9"
-Exhibidor Cupcakes Nube,109.99,"Description for product 10"
+Exhibidor Arco 2,7.000,
+Exhibidor Arco 3,9.000,
+Exhibidor Arco 3 Large,9.500,
+Exhibidor de Acrílicos 40,9.000,
+Exhibidor Grada 2,4000,
+Exhibidor Grada 3,9000,
+Exhibidor Escalera 4,18000,
+Exhibidor Ventana 3,9000,
+Exhibidor Cupcakes,3000,
+Exhibidor Cupcakes Nube,6000,
+Caja Alhajas,2500,
+Caja Bisagra,1200,
+Caja Corrediza,1500,
+Estuche,1200,
+Estuche Pendrive,1750,
