@@ -2,11 +2,12 @@ body {
     font-family: 'Nunito', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
+    background: linear-gradient(135deg, #ffffff, #d3d3d3);
+    /* Degradado en diagonal */
 }
 
 .container {
-    width: 80%;
+    width: 100%;
     margin: auto;
     overflow: hidden;
 }
@@ -16,13 +17,20 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
-    background-color: #f8f8f8;
 }
 
 .header-content {
     display: flex;
     width: 100%;
     justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    height: 90px;
+    margin: auto;
+    fill: black;
+    /* Ensure the SVG color is black */
 }
 
 .left {
@@ -35,6 +43,8 @@ header {
 
 h1 {
     margin: 0;
+    font-size: 5vw;
+    /* Adjust the font size relative to the viewport width */
 }
 
 h1,
@@ -46,41 +56,80 @@ h6 {
     font-family: 'Nunito', sans-serif;
 }
 
-/* Estilo base para el contenedor de productos */
-#product-catalog {
+nav.menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+/* Restablecer estilos predeterminados del botón */
+button {
+    background: none;
+    border: none;
+    padding: 0;
+    font: inherit;
+    color: inherit;
+    cursor: pointer;
+}
+
+#categorias {
+    /* display: none; */
+    /* position: absolute;
+    min-width: 160px;
+    z-index: 1; */
+}
+
+/* Estilo específico para el botón del menú desplegable */
+#categorias-btn {
+    /* padding: 10px; */
+    /* font-size: 16px; */
+    cursor: default;
+}
+
+.categoria {
+    display: none;
+    padding: 10px;
+    text-align: center;
+    background: #f9f9f9;
+    border-bottom: 1px solid #ccc;
+}
+
+/* Estilo para la barra de búsqueda */
+#searchbox {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Estilo para el texto del placeholder */
+#searchbox::placeholder {
+    font-style: italic;
+    color: #b6b6b6;
+}
+
+#products {
+    grid-template-columns: repeat(4, 1fr);
     display: grid;
     gap: 20px;
     padding: 20px;
 }
 
-/* Estilo para productos en pantallas widescreen (4 columnas) */
-@media (min-width: 1200px) {
-    #product-catalog {
-        grid-template-columns: repeat(4, 1fr);
-    }
+nav.menu {
+    padding: 20px;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
-/* Estilo para productos en pantallas portrait (2 columnas) */
-@media (max-width: 1199px) {
-    #product-catalog {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-/* Estilo para pantallas portrait */
-@media (orientation: portrait) {
-    h1 {
-        font-size: 5.5vw;
-        /* Adjust the font size for portrait orientation */
-    }
+.container {
+    display: flex;
 }
 
 /* Estilo para cada producto */
 .product {
     background: #ffffff;
     border: 1px solid #ccc;
-    margin: 20px 0;
-    padding: 10px;
+    padding: 5px;
     text-align: center;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -92,25 +141,58 @@ h6 {
 }
 
 .product h2 {
-    font-size: 1.5em;
-    margin: 10px 0;
-}
-
-.product p {
-    margin: 5px 0;
+    margin: 0;
+    padding: 0 5px;
+    font-size: 1.2em;
 }
 
 .price {
     font-weight: bold;
     color: #e67e22;
+    margin: 5px 0;
 }
 
-footer {
-    text-align: center;
-    padding: 20px 0;
-    background: #35424a;
-    color: #ffffff;
-    position: relative;
-    bottom: 0;
-    width: 100%;
+/* Estilo para productos en pantallas portrait (2 columnas) */
+@media (max-width: 1199px) {
+
+    .container {
+        display: block;
+    }
+
+    #products {
+        padding: 0 20px;
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    nav.menu {
+        padding-top: 10px;
+        flex-direction: row;
+        justify-content: space-between;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    #searchbox {
+        margin-right: 15px;
+        width: 100%;
+        padding: 5px;
+        margin: auto;
+    }
+
+    #categorias-btn {
+        text-align: right;
+        font-size: small;
+        padding: 5px 0 5px 10px;
+
+    }
+
+    h1 {
+        font-size: 6vw;
+        /* Adjust the font size for portrait orientation */
+    }
+
+    .logo {
+        height: 60px;
+        /* Adjust the height for portrait orientation */
+    }
 }

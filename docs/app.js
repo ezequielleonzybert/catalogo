@@ -1,4 +1,4 @@
-const productCatalog = document.getElementById('product-catalog');
+const productCatalog = document.getElementById('products');
 
 // Detect if running on GitHub Pages or local server
 const isGitHubPages = location.hostname === 'ezequielleonzybert.github.io';
@@ -66,7 +66,7 @@ async function renderProducts(products) {
         // Add the rest of the product details
         const productDetails = `
             <h2>${product.name}</h2>
-            <p>$${product.price}</p>
+            <p class="price">$${product.price}</p>
         `;
         productElement.innerHTML += productDetails;
 

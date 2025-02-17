@@ -12,15 +12,42 @@
 <body>
     <header>
         <div class="header-content">
-            <h1 class="left">invento láser</h1>
-            <h1 class="right">catálogo</h1>
+            <img class="logo" src="images/logo/logo_completo_negro.svg" alt="Logo">
+            <!-- <h1 class="right">catálogo</h1> -->
         </div>
     </header>
-    <main>
-        <section id="product-catalog">
-            <!-- Products will be dynamically inserted here -->
-        </section>
-    </main>
+
+    <div class="container">
+        <nav class="menu">
+            <input type="search" placeholder="Buscar" id="searchbox">
+            <button id="categorias-btn">Categorías</button>
+            <div id="categorias">
+                <div class="categoria">
+                    <label>Exhibidores</label>>
+                    <input type="checkbox">
+                </div>
+                <div class="categoria">
+                    <label>Decoración</label>>
+                    <input type="checkbox">
+                </div>
+                <div class="categoria">
+                    <label>Juguetes</label>>
+                    <input type="checkbox">
+                </div>
+                <div class="categoria">
+                    <label>Contenedores</label>>
+                    <input type="checkbox">
+                </div>
+            </div>
+        </nav>
+
+        <main>
+            <section id="products">
+                <!-- Products will be dynamically inserted here -->
+            </section>
+        </main>
+    </div>
+
     <script src="app.js"></script>
 </body>
 
