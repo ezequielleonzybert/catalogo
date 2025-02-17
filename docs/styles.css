@@ -1,5 +1,5 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Nunito', sans-serif;
     margin: 0;
     padding: 0;
     background-color: #f4f4f4;
@@ -12,14 +12,38 @@ body {
 }
 
 header {
-    background: #35424a;
-    color: #ffffff;
-    padding: 20px 0;
-    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #f8f8f8;
+}
+
+.header-content {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.left {
+    text-align: left;
+}
+
+.right {
+    text-align: right;
 }
 
 h1 {
     margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Nunito', sans-serif;
 }
 
 /* Estilo base para el contenedor de productos */
@@ -40,6 +64,14 @@ h1 {
 @media (max-width: 1199px) {
     #product-catalog {
         grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Estilo para pantallas portrait */
+@media (orientation: portrait) {
+    h1 {
+        font-size: 5.5vw;
+        /* Adjust the font size for portrait orientation */
     }
 }
 

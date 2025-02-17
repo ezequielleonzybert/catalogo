@@ -22,14 +22,17 @@ function parseCSV(data) {
     });
 }
 
-function checkImageExists(url) {
-    return fetch(url, { method: 'HEAD' })
-        .then(response => response.ok)
-        .catch(() => false);
-}
-
 function formatProductName(name) {
     return name.toLowerCase().replace(/ /g, '_');
+}
+
+async function loadImage(url) {
+    return new Promise((resolve, reject) => {
+        const img = new Image();
+        img.onload = () => resolve(url);
+        img.onerror = () => reject(url);
+        img.src = url;
+    });
 }
 
 async function renderProducts(products) {
@@ -43,8 +46,13 @@ async function renderProducts(products) {
         const imageUrlPng = `${baseImageUrl}${formattedName}/1.png`;
         const imageUrlJpg = `${baseImageUrl}${formattedName}/1.jpg`;
 
-        // Determine which image URL to use
-        const imageUrl = await checkImageExists(imageUrlPng) ? imageUrlPng : imageUrlJpg;
+        // Try to load both images and use the first one that loads successfully
+        let imageUrl;
+        try {
+            imageUrl = await loadImage(imageUrlPng);
+        } catch {
+            imageUrl = await loadImage(imageUrlJpg);
+        }
 
         // Create an image element and set the src attribute
         const img = document.createElement('img');
@@ -58,8 +66,7 @@ async function renderProducts(products) {
         // Add the rest of the product details
         const productDetails = `
             <h2>${product.name}</h2>
-            <p>${product.description}</p>
-            <p>Price: $${product.price}</p>
+            <p>$${product.price}</p>
         `;
         productElement.innerHTML += productDetails;
 
