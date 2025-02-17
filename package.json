@@ -2,9 +2,9 @@
   "name": "product-catalog",
   "version": "1.0.0",
   "description": "A project to manage a product catalog with images.",
-  "main": "src/app.ts",
+  "main": "docs/app.ts",
   "scripts": {
-    "start": "ts-node src/app.ts",
+    "start": "ts-node docs/app.ts",
     "build": "tsc"
   },
   "dependencies": {
