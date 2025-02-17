@@ -37,20 +37,26 @@ h6 {
 
 .container {
     display: flex;
+    flex-direction: row;
+    gap: 20px;
+    padding: 0 20px;
+}
+
+nav.menu {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+main {
+    display: flex;
+    flex: 6;
 }
 
 #products {
     grid-template-columns: repeat(4, 1fr);
     display: grid;
     gap: 20px;
-    padding: 20px;
-}
-
-nav.menu {
-    display: flex;
-    padding: 20px 0 20px 20px;
-    flex-direction: column;
-    width: 100%;
 }
 
 /* Estilo para la barra de búsqueda */
@@ -68,13 +74,11 @@ nav.menu {
     color: #b6b6b6;
 }
 
-
 #categorias-btn {
     cursor: default;
     font-size: medium;
     margin: 0;
     margin-left: 1px;
-    /* Me molestaba en 0*/
     padding: 0;
 }
 
@@ -89,7 +93,6 @@ nav.menu {
     text-align: left;
 }
 
-/* Estilo para cada producto */
 .product {
     background: #ffffff;
     border: 1px solid #ccc;
@@ -131,9 +134,8 @@ nav.menu {
 
     nav.menu {
         padding: 20px;
+        display: flex;
         flex-direction: row;
-        justify-content: space-between;
-        width: auto;
     }
 
     #searchbox {
