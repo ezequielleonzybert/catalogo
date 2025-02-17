@@ -64,9 +64,10 @@ async function renderProducts(products) {
         productElement.appendChild(img);
 
         // Add the rest of the product details
+        const formattedPrice = Number(product.price).toLocaleString('es-AR');
         const productDetails = `
             <h2>${product.name}</h2>
-            <p class="price">$${product.price}</p>
+            <p class="price">$${formattedPrice}</p>
         `;
         productElement.innerHTML += productDetails;
 
