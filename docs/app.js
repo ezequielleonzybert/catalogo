@@ -1,6 +1,12 @@
 const productCatalog = document.getElementById('product-catalog');
 
-fetch('docs/data/products.csv')
+// Detect if running on GitHub Pages or local server
+const isGitHubPages = location.hostname === 'ezequielleonzybert.github.io';
+const baseImageUrl = isGitHubPages
+    ? 'https://raw.githubusercontent.com/ezequielleonzybert/catalogo/refs/heads/main/docs/images/'
+    : 'images/';
+
+fetch('data/products.csv')
     .then(response => response.text())
     .then(data => {
         const products = parseCSV(data);
@@ -34,8 +40,8 @@ async function renderProducts(products) {
 
         // Construct the image URL for "1.png" or "1.jpg"
         const formattedName = formatProductName(product.name);
-        const imageUrlPng = `https://raw.githubusercontent.com/ezequielleonzybert/catalogo/refs/heads/main/docs/images/${formattedName}/1.png`;
-        const imageUrlJpg = `https://raw.githubusercontent.com/ezequielleonzybert/catalogo/refs/heads/main/docs/images/${formattedName}/1.jpg`;
+        const imageUrlPng = `${baseImageUrl}${formattedName}/1.png`;
+        const imageUrlJpg = `${baseImageUrl}${formattedName}/1.jpg`;
 
         // Determine which image URL to use
         const imageUrl = await checkImageExists(imageUrlPng) ? imageUrlPng : imageUrlJpg;
