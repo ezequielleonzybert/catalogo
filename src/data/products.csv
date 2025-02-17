@@ -1,0 +1,11 @@
+name,price,description,image_url
+Product 1,19.99,"Description for product 1",/src/images/product1/
+Product 2,29.99,"Description for product 2",/src/images/product2/
+Product 3,39.99,"Description for product 3",/src/images/product3/
+Product 4,49.99,"Description for product 4",/src/images/product4/
+Product 5,59.99,"Description for product 5",/src/images/product5/
+Product 6,69.99,"Description for product 6",/src/images/product6/
+Product 7,79.99,"Description for product 7",/src/images/product7/
+Product 8,89.99,"Description for product 8",/src/images/product8/
+Product 9,99.99,"Description for product 9",/src/images/product9/
+Product 10,109.99,"Description for product 10",/src/images/product10/
