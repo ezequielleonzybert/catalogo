@@ -186,8 +186,8 @@ main {
     #categorias {
         flex-wrap: wrap;
         gap: 7px;
-        display: none;
-        transition: transform 0.4s ease;
+        display: flex;
+        transition: opacity 0.4s ease, transform 0.4s ease;
     }
 
     .categoria {
@@ -215,13 +215,17 @@ main {
     .logo {
         height: 60px;
     }
-}
 
-/* ANIMATONS */
-.rotate180 {
-    transform: rotate(-180deg);
-}
+    /* ANIMATONS */
+    .rotate180 {
+        transform: rotate(-180deg);
+    }
 
-.appear {
-    opacity: 100%;
+    .disappear {
+        opacity: 0;
+    }
+
+    .move {
+        transform: translateY(-10px);
+    }
 }

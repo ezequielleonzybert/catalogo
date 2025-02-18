@@ -70,11 +70,13 @@ async function renderProducts(products) {
 function toggleCategorias() {
     const categorias = document.getElementById('categorias');
     const arrow = document.getElementById('arrow');
-    if (categorias.style.display === 'none' || categorias.style.display === '') {
-        categorias.style.display = 'flex';
+    if (categorias.classList.contains('disappear')) {
+        categorias.classList.remove('disappear');
+        categorias.classList.remove('move');
         arrow.classList.add('rotate180');
     } else {
-        categorias.style.display = 'none';
+        categorias.classList.add('disappear');
+        categorias.classList.add('move');
         arrow.classList.remove('rotate180');
     }
 }
