@@ -7,6 +7,7 @@ body {
 }
 
 header {
+    user-select: none;
     display: flex;
     /* background-color: aquamarine; */
 }
@@ -86,10 +87,19 @@ main {
     text-align: left;
 }
 
+#categorias-btn span {
+    user-select: none;
+}
+
 #arrow {
     height: 10px;
     display: none;
 }
+
+.categoria label {
+    user-select: none;
+}
+
 
 .categoria {
     font-size: small;
