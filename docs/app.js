@@ -67,16 +67,35 @@ async function renderProducts(products) {
     }
 }
 
+const categorias = document.getElementsByClassName('categorias')[0];
+let categorias_height = categorias.clientHeight;
+const products = document.getElementById('products');
+const arrow = document.getElementById('arrow');
+
 function toggleCategorias() {
-    const categorias = document.getElementById('categorias');
-    const arrow = document.getElementById('arrow');
+    categorias_height = categorias.clientHeight;
     if (categorias.classList.contains('disappear')) {
-        categorias.classList.remove('disappear');
-        categorias.classList.remove('move');
         arrow.classList.add('rotate180');
+        categorias.classList.remove('disappear');
+        categorias.style.transform = "translateY(20px)";
+        products.style.transform = "translateY(" + (categorias_height + 20).toString() + "px)";
     } else {
         categorias.classList.add('disappear');
-        categorias.classList.add('move');
+        categorias.style.transform = "translateY(0)";
+        products.style.transform = "translateY(0)";
         arrow.classList.remove('rotate180');
+        products.classList.remove('move');
     }
 }
+
+window.addEventListener("resize", () => {
+    if (window.innerWidth < 800 && !categorias.classList.contains('disappear')) {
+        categorias_height = categorias.clientHeight;
+        products.style.transform = "translateY(" + (categorias_height + 20).toString() + "px)";
+    }
+    else {
+        // categorias.style.opacity = "0";
+        console.log(1)
+        products.style.transform = "translateY(0)";
+    }
+});
