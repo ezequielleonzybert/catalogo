@@ -66,3 +66,15 @@ async function renderProducts(products) {
         productCatalog.appendChild(productElement);
     }
 }
+
+function toggleCategorias() {
+    const categorias = document.getElementById('categorias');
+    const arrow = document.getElementById('arrow');
+    if (categorias.style.display === 'none' || categorias.style.display === '') {
+        categorias.style.display = 'flex';
+        arrow.classList.add('rotate180');
+    } else {
+        categorias.style.display = 'none';
+        arrow.classList.remove('rotate180');
+    }
+}

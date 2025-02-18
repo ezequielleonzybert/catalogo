@@ -74,7 +74,7 @@ main {
 
 #searchbox::placeholder {
     font-style: italic;
-    color: #b0b0b0;
+    color: #6a6a6a;
 }
 
 #categorias-btn {
@@ -89,7 +89,7 @@ main {
     text-align: left;
 }
 
-#categorias-btn img {
+#arrow {
     height: 10px;
     display: none;
 }
@@ -120,8 +120,10 @@ main {
 }
 
 .price {
-    font-weight: bold;
-    color: #e67e22;
+    /* font-weight: bold; */
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: small;
+    color: #d4976e;
     margin: 5px 0;
 }
 
@@ -135,7 +137,7 @@ main {
     }
 
     #products {
-        padding: 0 20px 20px 20px;
+        padding: 20px;
         grid-template-columns: repeat(2, 1fr);
     }
 
@@ -144,6 +146,7 @@ main {
         flex-direction: column;
         /* background-color: #e67e22; */
         padding: 0 20px;
+        gap: 15px;
     }
 
     #search-n-btn {
@@ -161,40 +164,44 @@ main {
     }
 
     #categorias-btn {
+        cursor: pointer;
         font-size: small;
         display: flex;
         align-items: center;
         justify-content: right;
-        /* background-color: antiquewhite; */
         gap: 5px;
         margin-left: 20px;
+        -webkit-tap-highlight-color: transparent;
     }
 
     #categorias-btn span {
         display: flex;
     }
 
-    #categorias-btn img {
+    #arrow {
         display: flex;
+        transition: transform 0.4s ease;
     }
 
     #categorias {
-        display: flex;
-        padding: 15px 0;
+        flex-wrap: wrap;
         gap: 7px;
+        display: none;
+        transition: transform 0.4s ease;
     }
 
     .categoria {
         padding: 0;
         margin: 0;
         display: flex;
-        gap: 2px;
+        gap: 3px;
     }
 
     .categoria label {
         margin: 0;
         padding: 0;
         font-size: smaller;
+        white-space: nowrap;
     }
 
     input[type="checkbox"] {
@@ -208,4 +215,13 @@ main {
     .logo {
         height: 60px;
     }
+}
+
+/* ANIMATONS */
+.rotate180 {
+    transform: rotate(-180deg);
+}
+
+.appear {
+    opacity: 100%;
 }

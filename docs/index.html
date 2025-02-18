@@ -18,9 +18,9 @@
         <nav class="menu">
             <div id="search-n-btn">
                 <input id="searchbox" type="search" placeholder="Buscar...">
-                <button id="categorias-btn">
+                <button id="categorias-btn" onclick="toggleCategorias()">
                     <span>Categorías</span>
-                    <img src="images/icons/chevron-down.svg">
+                    <img id="arrow" src="images/icons/chevron-down.svg">
                 </button>
             </div>
 
@@ -40,6 +40,10 @@
                 <div class="categoria">
                     <input type="checkbox" id="check-contenedores">
                     <label for="check-contenedores">Contenedores</label>
+                </div>
+                <div class="categoria">
+                    <input type="checkbox" id="check-otros">
+                    <label for="check-otros">Otros</label>
                 </div>
             </div>
         </nav>
