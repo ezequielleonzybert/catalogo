@@ -36,23 +36,15 @@ async function loadImage(url) {
 }
 
 async function renderProducts(products) {
-    productCatalog.innerHTML = ''; // Clear existing content
+    productCatalog.innerHTML = '';
     for (const product of products) {
         const productElement = document.createElement('div');
         productElement.classList.add('product');
 
-        // Construct the image URL for "1.png" or "1.jpg"
         const formattedName = formatProductName(product.name);
-        const imageUrlPng = `${baseImageUrl}${formattedName}/1.png`;
-        const imageUrlJpg = `${baseImageUrl}${formattedName}/1.jpg`;
 
-        // Try to load both images and use the first one that loads successfully
-        let imageUrl;
-        try {
-            imageUrl = await loadImage(imageUrlPng);
-        } catch {
-            imageUrl = await loadImage(imageUrlJpg);
-        }
+
+        const imageUrl = `${baseImageUrl}${formattedName}/0.webp`;
 
         // Create an image element and set the src attribute
         const img = document.createElement('img');
