@@ -48,6 +48,11 @@ nav.menu {
     flex: 1;
 }
 
+#search-n-btn {
+    display: flex;
+    flex-direction: column;
+}
+
 main {
     display: flex;
     flex: 6;
@@ -69,7 +74,7 @@ main {
 
 #searchbox::placeholder {
     font-style: italic;
-    color: #b6b6b6;
+    color: #291616;
 }
 
 #categorias-btn {
@@ -135,58 +140,65 @@ main {
     }
 
     nav.menu {
-        flex: auto;
-        padding: 10px 20px 20px 20px;
         display: flex;
-        flex-wrap: wrap;
-        flex-direction: unset;
-        align-items: stretch;
-        height: 30px;
-        background-color: #e67e22;
+        flex-direction: column;
+        /* background-color: #e67e22; */
+        padding: 0 20px;
+    }
+
+    #search-n-btn {
+        display: flex;
+        flex-direction: row;
+        /* background-color: chartreuse; */
+        justify-content: center;
+        align-items: center;
     }
 
     #searchbox {
-        margin-right: 20px;
-        height: 100%;
-        flex: 3;
+        margin: auto;
+        flex-grow: 1;
+        /* background-color: aqua; */
     }
 
     #categorias-btn {
         font-size: small;
-        height: 100%;
-        flex: 1;
-        text-align: center;
         display: flex;
-        flex-direction: row;
-        gap: 5px;
         align-items: center;
+        justify-content: right;
+        /* background-color: antiquewhite; */
+        gap: 5px;
+        margin-left: 20px;
+    }
+
+    #categorias-btn span {
+        display: flex;
     }
 
     #categorias-btn img {
         display: flex;
-        height: 10px;
     }
 
     #categorias {
-        height: 100%;
         display: flex;
-        flex-direction: row;
-        /* flex: 1; */
-        z-index: 1;
+        padding: 15px 0;
+        gap: 7px;
     }
 
     .categoria {
+        padding: 0;
+        margin: 0;
         display: flex;
-        flex-direction: row;
-        align-items: center;
+        gap: 2px;
+    }
+
+    .categoria label {
+        margin: 0;
+        padding: 0;
+        font-size: smaller;
     }
 
     input[type="checkbox"] {
-        display: flex;
-    }
-
-    label {
-        display: flex;
+        margin: 0;
     }
 
     h1 {
