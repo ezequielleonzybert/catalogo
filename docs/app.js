@@ -68,9 +68,12 @@ async function renderProducts(products) {
 }
 
 const categorias = document.getElementsByClassName('categorias')[0];
-let categorias_height = categorias.clientHeight;
 const products = document.getElementById('products');
 const arrow = document.getElementById('arrow');
+let categorias_height = categorias.clientHeight;
+let prev_categorias_height = categorias_height;
+let prev_width = window.innerWidth;
+let current_width
 
 function toggleCategorias() {
     categorias_height = categorias.clientHeight;
@@ -89,13 +92,19 @@ function toggleCategorias() {
 }
 
 window.addEventListener("resize", () => {
-    if (window.innerWidth < 800 && !categorias.classList.contains('disappear')) {
+    current_width = window.innerWidth
+    if (current_width < 800) {
         categorias_height = categorias.clientHeight;
-        products.style.transform = "translateY(" + (categorias_height + 20).toString() + "px)";
+        if (prev_width >= 800 && !categorias.classList.contains('disappear')) {
+            products.style.transform = "translateY(" + (categorias_height + 20).toString() + "px)";
+        }
+        else if (categorias_height != prev_categorias_height && !categorias.classList.contains('disappear')) {
+            products.style.transform = "translateY(" + (categorias_height + 20).toString() + "px)";
+            prev_categorias_height = categorias_height;
+        }
     }
-    else {
-        // categorias.style.opacity = "0";
-        console.log(1)
+    else if (current_width >= 800 && prev_width < 800) {
         products.style.transform = "translateY(0)";
     }
+    prev_width = current_width;
 });
