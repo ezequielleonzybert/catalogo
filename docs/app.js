@@ -1,4 +1,7 @@
 const productCatalog = document.getElementById('products');
+const body = document.body;
+body.style.width = screen.width.toString();
+body.style.height = screen.height.toString();
 
 // Detect if running on GitHub Pages or local server
 const isGitHubPages = location.hostname === 'ezequielleonzybert.github.io';
@@ -15,10 +18,10 @@ fetch('data/products.csv')
     .catch(error => console.error('Error fetching the CSV file:', error));
 
 function parseCSV(data) {
-    const rows = data.split('\n').slice(1); // Skip header row
+    const rows = data.split('\n').slice(1); // Omitir la cabecera
     return rows.map(row => {
-        const [name, price, description] = row.split(',');
-        return { name, price, description };
+        const [name, price, description, category] = row.split(',');
+        return { name, price, description, category: category.trim() };
     });
 }
 
@@ -40,32 +43,42 @@ async function renderProducts(products) {
     for (const product of products) {
         const productElement = document.createElement('div');
         productElement.classList.add('product');
+        productElement.setAttribute('data-category', product.category); // Agregar categoría
 
         const formattedName = formatProductName(product.name);
-
-
         const imageUrl = `${baseImageUrl}${formattedName}/0.webp`;
 
-        // Create an image element and set the src attribute
         const img = document.createElement('img');
         img.src = imageUrl;
         img.alt = product.name;
-        // img.loading = 'lazy'; // Enable lazy loading
 
-        // Append the image element to the product element
         productElement.appendChild(img);
 
-        // Add the rest of the product details
         const formattedPrice = Number(product.price).toLocaleString('es-AR');
-        const productDetails = `
+        productElement.innerHTML += `
             <h2>${product.name}</h2>
             <p class="price">$${formattedPrice}</p>
         `;
-        productElement.innerHTML += productDetails;
 
         productCatalog.appendChild(productElement);
     }
 }
+
+function filterProducts() {
+    const selectedCategories = Array.from(document.querySelectorAll('.categoria input[type="checkbox"]:checked'))
+        .map(checkbox => checkbox.getAttribute('data-category'));
+
+    document.querySelectorAll('.product').forEach(product => {
+        const productCategory = product.getAttribute('data-category');
+        product.style.display = selectedCategories.length === 0 || selectedCategories.includes(productCategory)
+            ? 'block'
+            : 'none';
+    });
+}
+
+document.querySelectorAll('.categoria input[type="checkbox"]').forEach(checkbox => {
+    checkbox.addEventListener('change', filterProducts);
+});
 
 const categorias = document.getElementsByClassName('categorias')[0];
 const products = document.getElementById('products');
@@ -73,21 +86,23 @@ const arrow = document.getElementById('arrow');
 let categorias_height = categorias.clientHeight;
 let prev_categorias_height = categorias_height;
 let prev_width = window.innerWidth;
-let current_width
+let current_width = window.innerWidth;
 
 function toggleCategorias() {
-    categorias_height = categorias.clientHeight;
-    if (categorias.classList.contains('disappear')) {
-        arrow.classList.add('rotate180');
-        categorias.classList.remove('disappear');
-        categorias.style.transform = "translateY(20px)";
-        products.style.transform = "translateY(" + (categorias_height + 20).toString() + "px)";
-    } else {
-        categorias.classList.add('disappear');
-        categorias.style.transform = "translateY(0)";
-        products.style.transform = "translateY(0)";
-        arrow.classList.remove('rotate180');
-        products.classList.remove('move');
+    if (window.innerWidth < 800) {
+        categorias_height = categorias.clientHeight;
+        if (categorias.classList.contains('disappear')) {
+            arrow.classList.add('rotate180');
+            categorias.classList.remove('disappear');
+            categorias.style.transform = "translateY(20px)";
+            products.style.transform = "translateY(" + (categorias_height + 20).toString() + "px)";
+        } else {
+            categorias.classList.add('disappear');
+            categorias.style.transform = "translateY(0)";
+            products.style.transform = "translateY(0)";
+            arrow.classList.remove('rotate180');
+            products.classList.remove('move');
+        }
     }
 }
 
