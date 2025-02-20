@@ -1,3 +1,4 @@
+const productCatalog = document.getElementById('products');
 const body = document.body;
 body.style.width = screen.width.toString();
 body.style.height = screen.height.toString();
@@ -51,7 +52,7 @@ async function loadImage(url) {
 }
 
 async function renderProducts(products) {
-    products.innerHTML = '';
+    productCatalog.innerHTML = '';
     for (const product of products) {
         const productElement = document.createElement('div');
         productElement.classList.add('product');
@@ -73,7 +74,7 @@ async function renderProducts(products) {
             <p class="price">$${formattedPrice}</p>
         `;
 
-        products.appendChild(productElement);
+        productCatalog.appendChild(productElement);
     }
 }
 
