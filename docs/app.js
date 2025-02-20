@@ -123,3 +123,21 @@ window.addEventListener("resize", () => {
     }
     prev_width = current_width;
 });
+
+// SEARCH ENGINE
+
+const searchbox = document.getElementById('searchbox');
+
+function searchProducts() {
+    const value = searchbox.value.toLowerCase();
+    if (value != '') {
+        document.querySelectorAll('.product').forEach(product => {
+            const productName = product.querySelector('h2').textContent.toLowerCase();
+            product.style.display = productName.includes(value) ? 'flex' : 'none';
+        });
+        return;
+    }
+    val
+}
+
+addEventListener('input', searchProducts);

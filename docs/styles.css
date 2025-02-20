@@ -74,7 +74,7 @@ nav.menu {
     border: 1px solid #ccc;
     border-radius: 5px;
     margin-bottom: 20px;
-    display: none;
+    /* display: none; */
 }
 
 #searchbox::placeholder {
@@ -170,6 +170,7 @@ nav.menu {
         /* background-color: chartreuse; */
         justify-content: center;
         align-items: center;
+        width: 100%;
     }
 
     #searchbox {
@@ -248,4 +249,8 @@ nav.menu {
     .disappear {
         opacity: 0;
     }
+}
+
+.hidden {
+    display: none;
 }
