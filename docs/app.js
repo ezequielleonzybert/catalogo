@@ -99,3 +99,29 @@ searchbox.addEventListener('input', filterAndSearchProducts);
 document.querySelectorAll('.categoria input[type="checkbox"]').forEach(checkbox => {
     checkbox.addEventListener('change', filterAndSearchProducts);
 });
+
+const categorias = document.getElementsByClassName('categorias')[0];
+const products = document.getElementById('products');
+const arrow = document.getElementById('arrow');
+let categorias_height = categorias.clientHeight;
+let prev_categorias_height = categorias_height;
+let prev_width = window.innerWidth;
+let current_width = window.innerWidth;
+
+function toggleCategorias() {
+    if (window.innerWidth < 800) {
+        categorias_height = categorias.clientHeight;
+        if (categorias.classList.contains('disappear')) {
+            arrow.classList.add('rotate180');
+            categorias.classList.remove('disappear');
+            categorias.style.transform = "translateY(20px)";
+            products.style.transform = "translateY(" + (categorias_height + 20).toString() + "px)";
+        } else {
+            categorias.classList.add('disappear');
+            categorias.style.transform = "translateY(0)";
+            products.style.transform = "translateY(0)";
+            arrow.classList.remove('rotate180');
+            products.classList.remove('move');
+        }
+    }
+}
