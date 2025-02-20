@@ -71,7 +71,7 @@ function filterProducts() {
     document.querySelectorAll('.product').forEach(product => {
         const productCategory = product.getAttribute('data-category');
         product.style.display = selectedCategories.length === 0 || selectedCategories.includes(productCategory)
-            ? 'block'
+            ? 'flex'
             : 'none';
     });
 }
