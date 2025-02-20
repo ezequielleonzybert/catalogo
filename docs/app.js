@@ -1,7 +1,13 @@
-const productCatalog = document.getElementById('products');
 const body = document.body;
 body.style.width = screen.width.toString();
 body.style.height = screen.height.toString();
+const categorias = document.getElementsByClassName('categorias')[0];
+const products = document.getElementById('products');
+const arrow = document.getElementById('arrow');
+let categorias_height = categorias.clientHeight;
+let prev_categorias_height = categorias_height;
+let prev_width = window.innerWidth;
+let current_width = window.innerWidth;
 
 // Detect if running on GitHub Pages or local server
 const isGitHubPages = location.hostname === 'ezequielleonzybert.github.io';
@@ -45,7 +51,7 @@ async function loadImage(url) {
 }
 
 async function renderProducts(products) {
-    productCatalog.innerHTML = '';
+    products.innerHTML = '';
     for (const product of products) {
         const productElement = document.createElement('div');
         productElement.classList.add('product');
@@ -67,7 +73,7 @@ async function renderProducts(products) {
             <p class="price">$${formattedPrice}</p>
         `;
 
-        productCatalog.appendChild(productElement);
+        products.appendChild(productElement);
     }
 }
 
@@ -99,14 +105,6 @@ searchbox.addEventListener('input', filterAndSearchProducts);
 document.querySelectorAll('.categoria input[type="checkbox"]').forEach(checkbox => {
     checkbox.addEventListener('change', filterAndSearchProducts);
 });
-
-const categorias = document.getElementsByClassName('categorias')[0];
-const products = document.getElementById('products');
-const arrow = document.getElementById('arrow');
-let categorias_height = categorias.clientHeight;
-let prev_categorias_height = categorias_height;
-let prev_width = window.innerWidth;
-let current_width = window.innerWidth;
 
 function toggleCategorias() {
     if (window.innerWidth < 800) {
