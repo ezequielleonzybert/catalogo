@@ -2,7 +2,6 @@ body {
     font-family: 'Nunito', sans-serif;
     margin: 0;
     padding: 0;
-    /* height: 100dvh; */
     background: linear-gradient(135deg, hwb(0 100% 0%), #d3d3d3);
     background-attachment: fixed;
 }
@@ -10,18 +9,19 @@ body {
 header {
     user-select: none;
     display: flex;
-    /* background-color: aquamarine; */
 }
 
 .logo {
     height: 90px;
-    margin: 20px auto;
+    padding: 20px 0;
+    position: relative;
+    left: 50vw;
+    transform: translateX(-50%);
 }
 
 h1 {
     margin: 0;
     font-size: 5vw;
-    /* Adjust the font size relative to the viewport width */
 }
 
 h1,
