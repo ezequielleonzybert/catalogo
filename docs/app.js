@@ -3,13 +3,11 @@ const body = document.body;
 body.style.width = screen.width.toString();
 body.style.height = screen.height.toString();
 const categorias = document.getElementsByClassName('categorias')[0];
-const products = document.getElementById('products');
 const arrow = document.getElementById('arrow');
 let categorias_height = categorias.clientHeight;
 let prev_categorias_height = categorias_height;
 let prev_width = window.innerWidth;
 let current_width = window.innerWidth;
-
 // Detect if running on GitHub Pages or local server
 const isGitHubPages = location.hostname === 'ezequielleonzybert.github.io';
 const baseImageUrl = isGitHubPages
@@ -19,8 +17,8 @@ const baseImageUrl = isGitHubPages
 fetch('data/products.csv')
     .then(response => response.text())
     .then(data => {
-        const products = parseCSV(data);
-        renderProducts(products);
+        const parsedProducts = parseCSV(data);
+        renderProducts(parsedProducts);
     })
     .catch(error => console.error('Error fetching the CSV file:', error));
 
@@ -114,13 +112,13 @@ function toggleCategorias() {
             arrow.classList.add('rotate180');
             categorias.classList.remove('disappear');
             categorias.style.transform = "translateY(20px)";
-            products.style.transform = "translateY(" + (categorias_height + 20).toString() + "px)";
+            productCatalog.style.transform = "translateY(" + (categorias_height + 20).toString() + "px)";
         } else {
             categorias.classList.add('disappear');
             categorias.style.transform = "translateY(0)";
-            products.style.transform = "translateY(0)";
+            productCatalog.style.transform = "translateY(0)";
             arrow.classList.remove('rotate180');
-            products.classList.remove('move');
+            productCatalog.classList.remove('move');
         }
     }
 }
