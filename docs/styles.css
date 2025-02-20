@@ -248,6 +248,7 @@ nav.menu {
 
     .disappear {
         opacity: 0;
+        pointer-events: none;
     }
 }
 
