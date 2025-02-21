@@ -4,11 +4,7 @@ body.style.width = screen.width.toString();
 body.style.height = screen.height.toString();
 const categorias = document.getElementsByClassName('categorias')[0];
 const arrow = document.getElementById('arrow');
-let categorias_height = categorias.clientHeight;
-let prev_categorias_height = categorias_height;
-let prev_width = window.innerWidth;
-let current_width = window.innerWidth;
-// Detect if running on GitHub Pages or local server
+
 const isGitHubPages = location.hostname === 'ezequielleonzybert.github.io';
 const baseImageUrl = isGitHubPages
     ? 'https://raw.githubusercontent.com/ezequielleonzybert/catalogo/refs/heads/main/docs/images/'
@@ -105,21 +101,35 @@ document.querySelectorAll('.categoria input[type="checkbox"]').forEach(checkbox 
     checkbox.addEventListener('change', filterAndSearchProducts);
 });
 
+//menu categorias
+let isHidden = true;
+
 function toggleCategorias() {
-    if (window.innerWidth >= 800) {
-        categorias.classList.add('disappear');
-        arrow.classList.remove('rotate180');
-        products.style.transform = "translateY(0)";
-        return;
+    categorias.classList.toggle('disappear');
+    arrow.classList.toggle('rotate180');
+    isHidden = !isHidden;
+
+    if (isHidden) {
+        categorias.style.transform = "translateY(0)";
+        productCatalog.style.transform = "translateY(0)";
+    }
+    else {
+        categorias.style.transform = `translateY(20px)`;
+        productCatalog.style.transform = `translateY(${categorias.clientHeight + 20}px)`;
     }
 
-    const isHidden = categorias.classList.toggle('disappear');
-    arrow.classList.toggle('rotate180', !isHidden);
-    categorias.style.transform = isHidden ? "translateY(0)" : "translateY(20px)";
-    products.style.transform = isHidden ? "translateY(0)" : `translateY(${categorias.clientHeight + 20}px)`;
 }
 
-window.addEventListener('resize', () => {
-    if (window.innerWidth >= 800) toggleCategorias();
-});
+let prev_width = window.innerWidth;
+let prev_categories_height = categorias.clientHeight;
 
+window.addEventListener('resize', () => {
+    if (window.innerWidth > 800 && prev_width <= 800 && !isHidden) {
+        toggleCategorias();
+    }
+    else if (categorias.clientHeight !== prev_categories_height && !isHidden) {
+        productCatalog.style.transform = `translateY(${categorias.clientHeight + 20}px)`;
+        prev_categories_height = categorias.clientHeight;
+    }
+    prev_width = window.innerWidth;
+});

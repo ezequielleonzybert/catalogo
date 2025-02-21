@@ -37,7 +37,7 @@ h6 {
     display: flex;
     flex-direction: row;
     gap: 20px;
-    padding: 0 20px 20px 20px;
+    padding: 0 20px;
 }
 
 nav.menu {
@@ -55,6 +55,7 @@ nav.menu {
     grid-template-columns: repeat(4, 1fr);
     display: grid;
     gap: 20px;
+    padding-bottom: 20px;
 }
 
 .product {
@@ -90,6 +91,7 @@ nav.menu {
     border: none;
     font: inherit;
     text-align: left;
+    pointer-events: none;
 }
 
 #categorias-btn span {
@@ -101,14 +103,17 @@ nav.menu {
     display: none;
 }
 
+.categoria {
+    font-size: small;
+    padding: 5px;
+    user-select: none;
+}
+
 .categoria label {
     user-select: none;
 }
 
-.categoria {
-    font-size: small;
-    padding: 5px;
-}
+
 
 .product {
     background: #ffffff;
@@ -177,6 +182,7 @@ nav.menu {
         gap: 5px;
         margin-left: 20px;
         -webkit-tap-highlight-color: transparent;
+        pointer-events: all;
     }
 
     #categorias-btn span {
