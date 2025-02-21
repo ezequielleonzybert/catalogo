@@ -106,19 +106,20 @@ document.querySelectorAll('.categoria input[type="checkbox"]').forEach(checkbox 
 });
 
 function toggleCategorias() {
-    if (window.innerWidth < 800) {
-        categorias_height = categorias.clientHeight;
-        if (categorias.classList.contains('disappear')) {
-            arrow.classList.add('rotate180');
-            categorias.classList.remove('disappear');
-            categorias.style.transform = "translateY(20px)";
-            productCatalog.style.transform = "translateY(" + (categorias_height + 20).toString() + "px)";
-        } else {
-            categorias.classList.add('disappear');
-            categorias.style.transform = "translateY(0)";
-            productCatalog.style.transform = "translateY(0)";
-            arrow.classList.remove('rotate180');
-            productCatalog.classList.remove('move');
-        }
+    if (window.innerWidth >= 800) {
+        categorias.classList.add('disappear');
+        arrow.classList.remove('rotate180');
+        products.style.transform = "translateY(0)";
+        return;
     }
+
+    const isHidden = categorias.classList.toggle('disappear');
+    arrow.classList.toggle('rotate180', !isHidden);
+    categorias.style.transform = isHidden ? "translateY(0)" : "translateY(20px)";
+    products.style.transform = isHidden ? "translateY(0)" : `translateY(${categorias.clientHeight + 20}px)`;
 }
+
+window.addEventListener('resize', () => {
+    if (window.innerWidth >= 800) toggleCategorias();
+});
+

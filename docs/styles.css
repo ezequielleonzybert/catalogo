@@ -121,6 +121,7 @@ nav.menu {
 
 .product img {
     max-width: 100%;
+    user-select: none;
 }
 
 .product h2 {
