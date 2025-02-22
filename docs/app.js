@@ -1,7 +1,4 @@
 const productCatalog = document.getElementById('products');
-const body = document.body;
-body.style.width = screen.width.toString();
-body.style.height = screen.height.toString();
 const categorias = document.getElementsByClassName('categorias')[0];
 const arrow = document.getElementById('arrow');
 
@@ -45,13 +42,13 @@ async function loadImage(url) {
     });
 }
 
-async function renderProducts(products) {
+async function renderProducts(parsedProducts) {
     productCatalog.innerHTML = '';
-    for (const product of products) {
+    for (const product of parsedProducts) {
         const productElement = document.createElement('div');
         productElement.classList.add('product');
         productElement.setAttribute('data-category', product.category);
-        productElement.setAttribute('data-tags', product.tags); // Guardar los tags
+        productElement.setAttribute('data-tags', product.tags);
 
         const formattedName = formatProductName(product.name);
         const imageUrl = `${baseImageUrl}${formattedName}/0.webp`;
