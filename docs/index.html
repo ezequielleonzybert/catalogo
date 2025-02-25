@@ -5,22 +5,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Invento Láser - Catálogo</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="modal.css">
-    <!-- <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet"> -->
-    <link rel="icon" type="image/png" href="images/logo/logo_circular_blanco.png">
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="icon" type="image/png" href="./images/logo/logo_circular_blanco.webp">
+    <meta http-equiv="Permissions-Policy" content="interest-cohort=()">
 </head>
 
 <body>
+    <!-- <div id="page-loader">
+        <div class="loader"></div>
+    </div> -->
 
-    <div class="modal hidden">
-        <div class="scroll-galery">
-
-        </div>
-    </div>
+    <div id="back"></div>
 
     <header>
-        <img class="logo" src="images/logo/logo_completo_negro.svg" alt="Logo">
+        <img class="logo" src="./images/logo/logo_completo_negro.svg" alt="Logo">
     </header>
 
     <div id="container">
@@ -29,11 +27,11 @@
                 <input id="searchbox" type="search" placeholder="Buscar...">
                 <button id="categorias-btn" onclick="toggleCategorias()">
                     <span>Categorías</span>
-                    <img id="arrow" src="images/icons/chevron-down.svg">
+                    <img id="arrow" src="./images/icons/chevron-down.svg">
                 </button>
             </div>
 
-            <div class="categorias disappear">
+            <div class="categorias">
                 <div class="categoria">
                     <input type="checkbox" id="check-exhibidores" data-category="exhibidores">
                     <label for="check-exhibidores">Exhibidores</label>
@@ -60,8 +58,12 @@
         </section>
     </div>
 
-    <script src="app.js">
-    </script>
+    <div class="modal hidden">
+        <div class="modal-content">
+        </div>
+    </div>
+
+    <script src="./app.js"></script>
 </body>
 
 </html>
