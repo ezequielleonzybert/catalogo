@@ -197,8 +197,16 @@ nav.menu {
     border-radius: 3px;
     margin: 10px;
     cursor: zoom-in;
+}
 
-    /* background-color: #d4976e; */
+@keyframes moverFondo {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    100% {
+        background-position: 100% 50%;
+    }
 }
 
 .scroll-gallery::-webkit-scrollbar {
@@ -268,6 +276,7 @@ nav.menu {
 
 .dot.active {
     background-color: grey;
+    ;
 }
 
 .arrow-side {
