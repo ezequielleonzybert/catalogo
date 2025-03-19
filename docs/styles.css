@@ -153,6 +153,12 @@ nav.menu {
     font-weight: 600;
 }
 
+.product p {
+    margin: 0;
+    font-size: 0.8em;
+    color: #ba5526;
+}
+
 .modal {
     position: fixed;
     z-index: 100;
