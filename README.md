@@ -1,3 +1,3 @@
 # Product Catalog
 
-URL: [ezequielleonzybert.github/catalogo](https://ezequielleonzybert.github.io/catalogo/)
+URL: [ezequielleonzybert.github.io/catalogo](https://ezequielleonzybert.github.io/catalogo/)
